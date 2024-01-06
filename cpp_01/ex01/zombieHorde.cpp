@@ -3,7 +3,6 @@
 Zombie* zombieHorde( int N, std::string name)
 {
     if (N <= 0) {
-        std::cout << "Invalid input" << std::endl;
         return NULL; // Return NULL for invalid input
     }
 
