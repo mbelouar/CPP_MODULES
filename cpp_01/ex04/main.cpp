@@ -26,7 +26,6 @@ void replaceAndWriteToFile(const std::string& filename, const std::string& s1, c
     while (getline(inputFile, line)) {
         size_t pos = 0;
         size_t searchLen = s1.length();
-
         while ((pos = line.find(s1, pos)) != std::string::npos) {
             line = line.substr(0, pos) + s2 + line.substr(pos + searchLen);
             pos += s2.length();

@@ -14,11 +14,18 @@ class ClapTrap {
     public :
         ClapTrap();
         ClapTrap(std::string name);
-        ~ClapTrap();
+        ClapTrap(const ClapTrap &src);
+	    virtual ~ClapTrap(void);
+	    ClapTrap		&operator =(const ClapTrap &src);
 
         void attack(const std::string& target);
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);
+        // Getters
+        std::string		getName(void) const;
+	    unsigned int	getHit_points(void) const;
+	    unsigned int	getEnergy_points(void) const;
+	    unsigned int	getAttack_points(void) const;
 };
 
 #endif

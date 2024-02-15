@@ -4,7 +4,7 @@ int main() {
     PhoneBook myPhoneBook;
     std::string command;
 
-    while (true) {
+    while (std::cin) {
         std::cout << std::endl << "================= PHONEBOOK MENU ====================" << std::endl;
         std::cout << "|  ADD    : to add a new contact to your phonebook. |" << std::endl;
         std::cout << "|  SEARCH : to search for contacts.                 |" << std::endl;
@@ -24,7 +24,6 @@ int main() {
             std::cout << "Invalid command. Please enter ADD, SEARCH, or EXIT." << std::endl;
         }
     }
-
     return 0;
 }
 

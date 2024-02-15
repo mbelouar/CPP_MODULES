@@ -4,13 +4,6 @@
 # include <iostream>
 # include <string>
 
-enum LogLevel {
-    DEBUG,
-    INFO,
-    WARNING,
-    ERROR
-};
-
 class Harl {
     private:
         void	debug(void);

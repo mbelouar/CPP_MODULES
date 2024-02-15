@@ -53,7 +53,7 @@ void PhoneBook::addContact() {
         int replaceIndex = _current % 8;  // Calculate the replace index
         _contacts[replaceIndex] = newContact;
         _current++;
-        _index = 8;  // Update _in dex to indicate that all slots are filled
+        _index = 8;  // Update _index to indicate that all slots are filled
     }
 
     std::cout << std::endl << "\"" << _firstname+" "+_lastname << "\"" << " ADDED SUCCESSFULLY" << std::endl;
