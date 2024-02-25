@@ -5,14 +5,14 @@
 
 class Fixed {
 private:
-	int					_fp;
-	static const int	_frac = 8;
+	int					fixedPoint;
+	static const int	fractBits = 8;
 public:
-	Fixed(void);
+	Fixed();
 	Fixed(const int x);
 	Fixed(const float x);
 	Fixed(Fixed const &src);
-	~Fixed(void);
+	~Fixed();
 
 	Fixed	&operator=(Fixed const &src);
 
@@ -22,6 +22,6 @@ public:
 	int		toInt(void) const;
 };
 
-std::ostream	&operator<<(std::ostream &o, Fixed const &i);
+std::ostream	&operator<<(std::ostream &output, Fixed const &i);
 
 #endif

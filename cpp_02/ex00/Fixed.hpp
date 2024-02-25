@@ -3,12 +3,12 @@
 
 class Fixed {
 private:
-	int					_fp;
-	static const int	_frac = 8;
+	int					fixedPoint;
+	static const int	fractBits = 8;
 public:
-	Fixed(void);
+	Fixed();
 	Fixed(Fixed const &src);
-	~Fixed(void);
+	~Fixed();
 
 	Fixed	&operator=(Fixed const &src);
 

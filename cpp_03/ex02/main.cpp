@@ -2,7 +2,9 @@
 #include "FragTrap.hpp"
 
 int main() {
-    FragTrap fragtrap("FRAG-001");
+    FragTrap fragtrap = FragTrap("\"FRAG-001\"");
+
+    FragTrap gg = fragtrap;
 
     fragtrap.highFivesGuys();
     fragtrap.attack("Enemy1");

@@ -3,7 +3,7 @@
 ClapTrap::ClapTrap()
 {
     std::cout << "Default constructor called" << std::endl;
-	this->name = "None";
+	this->name = "Unknown";
 	this->hitPoints = 10;
 	this->energyPoints = 10;
 	this->attackDamage = 0;
@@ -11,13 +11,13 @@ ClapTrap::ClapTrap()
 
 ClapTrap::ClapTrap(std::string name) : 
     name(name), hitPoints(10), energyPoints(10), attackDamage(0) {
-    std::cout << "ClapTrap " << name << " parametric constructor." << std::endl;
+    std::cout << "Parametric constructor called." << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &src)
 {
 	std::cout << "Copy constructor called for " << src.getName() << std::endl;
-	*this = src;
+	*this = src; // copy assignment operator called here
 }
 
 ClapTrap	&ClapTrap::operator =(const ClapTrap &src)
@@ -35,7 +35,7 @@ ClapTrap	&ClapTrap::operator =(const ClapTrap &src)
 
 ClapTrap::~ClapTrap()
 {
-    std::cout << "ClapTrap " << name << " destructor." << std::endl;
+    std::cout << name << " destructor called." << std::endl;
 }
 
 std::string	ClapTrap::getName(void) const
@@ -68,7 +68,7 @@ void    ClapTrap::attack(const std::string& target) {
 }
 
 void    ClapTrap::takeDamage(unsigned int amount) {
-    if (hitPoints > amount) {
+    if (hitPoints >= amount) {
         hitPoints -= amount;
         std::cout << "ClapTrap " << name << " takes " << amount << " damage. Remaining hit points: " << hitPoints << std::endl;
     } else {
@@ -77,7 +77,7 @@ void    ClapTrap::takeDamage(unsigned int amount) {
 }
 
 void    ClapTrap::beRepaired(unsigned int amount) {
-    if (hitPoints > 0 && energyPoints > 0) {
+    if (hitPoints >= 0 && energyPoints > 0) {
         hitPoints += amount;
         energyPoints--;
         std::cout << "ClapTrap " << name << " is repaired for " << amount << " hit points. Remaining hit points: " << hitPoints << std::endl;

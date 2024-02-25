@@ -9,6 +9,7 @@ int	main(void)
 	Fixed const	d(b);
 
 	a = Fixed(1234.4321f);
+
 	std::cout << "a is " << a << std::endl;
 	std::cout << "b is " << b << std::endl;
 	std::cout << "c is " << c << std::endl;
@@ -19,3 +20,16 @@ int	main(void)
 	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
 	return 0;
 }
+
+// #include <cmath>
+// int main()
+// {
+// 	int fp;
+// 	fp = roundf(10859.52);
+// 	std::cout << fp << std::endl;
+// 	std::cout << (float)fp << std::endl;
+// 	std::cout << (float)(1 << 8) << std::endl;
+//	std::cout << (float)pow(2,8) << std::endl;
+// 	std::cout << (float)fp / (float)(1<<8) << std::endl;
+	
+// }

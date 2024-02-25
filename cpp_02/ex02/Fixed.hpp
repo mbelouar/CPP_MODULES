@@ -5,36 +5,33 @@
 
 class Fixed {
 private:
-	int					_fp;
-	static const int	_frac = 8;
+	int					fixedPoint;
+	static const int	fractBits = 8;
 public:
-	Fixed(void);
+	Fixed();
 	Fixed(const int x);
 	Fixed(const float x);
 	Fixed(Fixed const &src);
-	~Fixed(void);
+	~Fixed();
 
 	Fixed	&operator =(Fixed const &src);
 
-	// comparison
-	bool	operator >(Fixed const &src) const;
-	bool	operator <(Fixed const &src) const;
-	bool	operator >=(Fixed const &src) const;
-	bool	operator <=(Fixed const &src) const;
-	bool	operator ==(Fixed const &src) const;
-	bool	operator !=(Fixed const &src) const;
+	bool	operator >(Fixed const &rhs) const;
+	bool	operator <(Fixed const &rhs) const;
+	bool	operator >=(Fixed const &rhs) const;
+	bool	operator <=(Fixed const &rhs) const;
+	bool	operator ==(Fixed const &rhs) const;
+	bool	operator !=(Fixed const &rhs) const;
 
-	// arithmetic
-	Fixed	operator +(Fixed const &src) const;
-	Fixed	operator -(Fixed const &src) const;
-	Fixed	operator *(Fixed const &src) const;
-	Fixed	operator /(Fixed const &src) const;
+	Fixed	operator +(Fixed const &rhs) const;
+	Fixed	operator -(Fixed const &rhs) const;
+	Fixed	operator *(Fixed const &rhs) const;
+	Fixed	operator /(Fixed const &rhs) const;
 
-	// increment / decrement
 	Fixed	&operator ++(); // prefix
 	Fixed	operator ++(int); // postfix
-	Fixed	&operator --(); // prefix
-	Fixed	operator --(int); // postfix
+	Fixed	&operator --();
+	Fixed	operator --(int);
 	
 	
 	int		getRawBits(void) const;
@@ -48,6 +45,6 @@ public:
 	static const Fixed	&max(const Fixed &a, const Fixed &b);
 };
 
-std::ostream	&operator<<(std::ostream &o, Fixed const &i);
+std::ostream	&operator<<(std::ostream &output, Fixed const &i);
 
 #endif

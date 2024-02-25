@@ -2,16 +2,21 @@
 #include "ScavTrap.hpp"
 
 int main() {
-    ScavTrap scavtrap("SCAV-001");
+    ScavTrap scavtrap = ScavTrap("\"SCAV-001\"");
 
     scavtrap.guardGate();
     scavtrap.attack("Enemy1");
     scavtrap.takeDamage(30);
     scavtrap.beRepaired(15);
-    scavtrap.guardGate(); // we can check if the ScavTrap is already in guardGate mode
+    scavtrap.guardGate();
 
+    // ScavTrap simo = ScavTrap("simo");
+
+    // ScavTrap bickle;
+    // bickle = simo;
     return 0;
 }
+
 
 // int	main(void)
 // {
