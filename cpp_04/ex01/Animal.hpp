@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <string>
+#include "Brain.hpp"
 
 class Animal {
     protected:
@@ -16,6 +17,7 @@ class Animal {
 
         std::string getType() const;
         virtual void    makeSound() const;
+        virtual Brain	*getBrain(void) const = 0;
 };
 
 #endif
