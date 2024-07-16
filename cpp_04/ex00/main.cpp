@@ -6,27 +6,29 @@
 #include "WrongCat.hpp"
 
 int main() {
-    const Animal* meta = new Animal();
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
-    std::cout << j->getType() << " " << std::endl;
-    std::cout << i->getType() << " " << std::endl;
-    i->makeSound(); //will output the cat sound!
-    j->makeSound();
-    meta->makeSound();
+    const Animal* animal = new Animal();
+    const Animal* dog = new Dog();
+    const Animal* cat = new Cat();
+    std::cout << dog->getType() << " " << std::endl;
+    std::cout << cat->getType() << " " << std::endl;
+    cat->makeSound();
+    dog->makeSound();
+    animal->makeSound();
+    std::cout << "===================" << std::endl;
+    
+    delete animal;
+    delete dog;
+    delete cat;
 
-    delete meta;
-    delete j;
-    delete i;
+    std::cout << "===================" << std::endl;
+    const WrongAnimal* wrongAnimal = new WrongAnimal();
+    const WrongAnimal* wrongCat = new WrongCat();
+    std::cout << "Wrong animal type: " << wrongCat->getType() << std::endl;
+    wrongCat->makeSound();
+    wrongAnimal->makeSound();
 
-    const WrongAnimal* wrongMeta = new WrongAnimal();
-    const WrongAnimal* wrongI = new WrongCat();
-    std::cout << "Wrong animal type: " << wrongI->getType() << std::endl;
-    wrongI->makeSound();
-    wrongMeta->makeSound();
-
-    delete wrongMeta;
-    delete wrongI;
+    delete wrongAnimal;
+    delete wrongCat;
 
     return 0;
 }

@@ -5,14 +5,14 @@
 # include "WrongAnimal.hpp"
 
 class WrongCat: public WrongAnimal {
-public:
-	WrongCat(void);
-	//WrongCat(std::string type);
-	WrongCat(const WrongCat &src);
-	virtual				~WrongCat(void);
-	WrongCat &operator	=(const WrongCat &src);
+	public:
+		WrongCat();
+		WrongCat(std::string type);
+		WrongCat(const WrongCat &src);
+		virtual				~WrongCat(void);
+		WrongCat &operator	=(const WrongCat &src);
 
-	void				makeSound(void) const;
+		void				makeSound(void) const;
 };
 
 #endif

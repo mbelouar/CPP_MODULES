@@ -32,7 +32,7 @@ void    Cat::makeSound() const {
     std::cout << "Cat sound - meww meww" << std::endl;
 }
 
-Brain	*Cat::getBrain(void) const
-{
-	return this->_brain;
-}
+// Brain	*Cat::getBrain(void) const
+// {
+// 	return this->_brain;
+// }

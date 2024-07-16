@@ -2,17 +2,18 @@
 #include <string>
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat(void): WrongAnimal("WrongCat")
+WrongCat::WrongCat(void)
 {
 	std::cout << " -> Default WrongCat constructor called." << std::endl;
+	this->_type = "WrongCat";
 }
 
-//WrongCat::WrongCat(std::string type): Animal(type)
-//{
-//	std::cout << " -> Parametric WrongCat constructor called." << std::endl;
-//}
+WrongCat::WrongCat(std::string type): WrongAnimal(type)
+{
+	std::cout << " -> Parametric WrongCat constructor called." << std::endl;
+}
 
-WrongCat::WrongCat(const WrongCat &src): WrongAnimal(src._type)
+WrongCat::WrongCat(const WrongCat &src): WrongAnimal(src)
 {
 	std::cout << " -> Copy WrongCat constructor called." << std::endl;
 	*this = src;
@@ -35,5 +36,5 @@ WrongCat	&WrongCat::operator =(const WrongCat &src)
 
 void	WrongCat::makeSound(void) const
 {
-	std::cout << "Imma dominate the world, meow !" << std::endl;
+	std::cout << "WrongCat sound, meow !" << std::endl;
 }

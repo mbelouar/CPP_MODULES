@@ -2,7 +2,7 @@
 #include <string>
 #include "Brain.hpp"
 
-Brain::Brain(void)
+Brain::Brain()
 {
 	std::cout << " -> Default Brain constructor called." << std::endl;
 }
@@ -13,7 +13,7 @@ Brain::Brain(const Brain &src)
 	*this = src;
 }
 
-Brain::~Brain(void)
+Brain::~Brain()
 {
 	std::cout << " -> Brain destructor called." << std::endl;
 }
@@ -23,26 +23,23 @@ Brain	&Brain::operator =(const Brain &src)
 	if (this != &src)
 	{
 		std::cout << " -> Copy assignement Brain called." << std::endl;
-		//this->setIdeas(src.getIdeas());
-		*this->ideas = *src.ideas;
+		this->setIdeas(src.getIdeas());
+		// *this->ideas = *src.ideas;
+		// for (int i = 0; i < 100; ++i) {
+    	// 	this->ideas[i] = src.ideas[i];
+		// }
 	}
 	return *this;
-}
+}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 
 const std::string	*Brain::getIdeas(void) const
 {
-	const std::string	*p_ideas = this->ideas;
-	return p_ideas;
+	const std::string	*new_ideas = this->ideas;
+	return new_ideas; // return a new memory address
 }
 
 void	Brain::setIdeas(const std::string *new_ideas)
 {
 	for (int cur = 0; cur < 100; cur++)
 		this->ideas[cur] = new_ideas[cur];
-}
-
-void	Brain::setIdea(std::string idea, int index)
-{
-	if (index >= 0 && index < 100)
-		this->ideas[index] = idea;
 }

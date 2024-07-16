@@ -8,10 +8,10 @@ protected:
 	std::string	_type;
 
 public:
-	WrongAnimal(void);
+	WrongAnimal();
 	WrongAnimal(std::string type);
 	WrongAnimal(const WrongAnimal &src);
-	virtual					~WrongAnimal();
+	virtual		~WrongAnimal();
 	WrongAnimal &operator	=(const WrongAnimal &src);
 
 	std::string				getType(void) const;

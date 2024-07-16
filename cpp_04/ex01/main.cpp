@@ -7,6 +7,7 @@
 #include "Brain.hpp"
 
 int main() {
+
     const int animalCount = 6;
     Animal* animals[animalCount];
     std::cout << "============== DOGS ===============" << std::endl;

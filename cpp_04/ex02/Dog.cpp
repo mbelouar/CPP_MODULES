@@ -7,7 +7,7 @@ Dog::Dog() {
     this->_brain = new Brain();
 }
 
-Dog::Dog(const Dog &src) : Animal(src) {
+Dog::Dog(const Dog &src) : AAnimal(src) {
     std::cout << "Dog copy contructor." << std::endl;
     this->_brain = new Brain();
     *this = src;
@@ -33,7 +33,7 @@ void    Dog::makeSound() const {
     std::cout << "Dog sound - haw haw" << std::endl;
 }
 
-// Brain	*Dog::getBrain(void) const
-// {
-// 	return this->_brain;
-// }
+Brain	*Dog::getBrain(void) const
+{
+	return this->_brain;
+}

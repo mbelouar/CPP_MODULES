@@ -2,14 +2,16 @@
 #include <string>
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal(void): _type("WrongAnimal")
+WrongAnimal::WrongAnimal(void)
 {
 	std::cout << " -> Default WrongAnimal constructor called." << std::endl;
+	this->_type = "WrongAnimal";
 }
 
-WrongAnimal::WrongAnimal(std::string type): _type(type)
+WrongAnimal::WrongAnimal(std::string type)
 {
 	std::cout << " -> Parametric WrongAnimal constructor called." << std::endl;
+	this->_type = type;
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal &src)
@@ -40,5 +42,5 @@ std::string	WrongAnimal::getType(void) const
 
 void	WrongAnimal::makeSound(void) const
 {
-	std::cout << "As a wrong animal, I don't really have a sound..." << std::endl;
+	std::cout << "WrongAnimal, I don't have any sound..." << std::endl;
 }

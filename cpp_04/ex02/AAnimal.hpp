@@ -2,21 +2,22 @@
 # define AANIMAL_CLASS_H
 
 # include <string>
+# include <iostream>
 # include "Brain.hpp"
 
 class AAnimal {
-protected:
-	std::string	_type;
+	protected:
+		std::string	type;
 
-public:
-	AAnimal(void);
-	AAnimal(std::string type);
-	AAnimal(const AAnimal &src);
-	virtual ~AAnimal(void);
-	AAnimal	&operator =(const AAnimal &src);
+	public:
+		AAnimal(void);
+		AAnimal(std::string type);
+		AAnimal(const AAnimal &src);
+		virtual ~AAnimal(void);
+		AAnimal	&operator =(const AAnimal &src);
 
-	std::string		getType(void) const;
-	virtual void	makeSound(void) const = 0;
+		std::string		getType(void) const;
+		virtual void	makeSound(void) const = 0;
 };
 
 #endif
