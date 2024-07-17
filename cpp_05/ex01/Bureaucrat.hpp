@@ -15,14 +15,31 @@ class Bureaucrat {
         Bureaucrat();
         Bureaucrat(const std::string name, unsigned int grade);
         Bureaucrat(const Bureaucrat &src);
-        ~Bureaucrat();
         Bureaucrat  &operator =(const Bureaucrat &src);
+        ~Bureaucrat();
 
-        std::string getName() const;
-        unsigned int getGrade() const;
-        void Bureaucrat::IncGrade();
-        void Bureaucrat::DecGrade();
+        std::string     getName() const;
+        unsigned int    getGrade() const;
+        void            IncGrade();
+        void            DecGrade();
+
+        void signForm(Form &form);
+
+        class GradeTooHighException : public std::exception {
+            public:
+                virtual const char* what() const throw() {
+                    return "Grade is too high for his form!";
+                }
+        };
+
+        class GradeTooLowException : public std::exception {
+            public:
+                virtual const char* what() const throw() {
+                    return "Grade is too low for his form!";
+                }
+        };
 };
 
+std::ostream	&operator<<(std::ostream &output, const Bureaucrat &b);
 
 #endif
