@@ -1,6 +1,12 @@
 # include "Form.hpp"
 
-Form::Form(const std::string& name, unsigned int signGrade, unsigned int execGrade)
+Form::Form()
+	: name("None"), signGrade(HIGHTEST_GRADE), execGrade(HIGHTEST_GRADE)
+{
+	this->_isSigned = false;
+}
+
+Form::Form(const std::string name, unsigned int signGrade, unsigned int execGrade)
     : name(name), isSigned(false), signGrade(signGrade), execGrade(execGrade) {
     if (signGrade < HIGHT_GRADE || execGrade < HIGHT_GRADE) {
         throw GradeTooHighException();
