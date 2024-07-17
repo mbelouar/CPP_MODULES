@@ -4,7 +4,7 @@
 Form::Form()
 	: name("None"), signGrade(HIGHT_GRADE), execGrade(HIGHT_GRADE)
 {
-	this->_isSigned = false;
+	this->isSigned = false;
 }
 
 Form::Form(std::string name, unsigned int signGrade, unsigned int execGrade)

@@ -3,9 +3,12 @@
 
 # include <iostream>
 # include <string>
+# include "Form.hpp"
 
 # define HIGHT_GRADE 1
 # define LOW_GRADE 150
+
+class Form;
 
 class Bureaucrat {
     private:

@@ -14,7 +14,7 @@ class Form {
         const unsigned int  signGrade;
         const unsigned int  execGrade;
     public:
-        From();
+        Form();
         Form(std::string name, unsigned int signGrade, unsigned int execGrade);
         Form(const Form &src);
         ~Form();
