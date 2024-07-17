@@ -13,7 +13,7 @@ class Bureaucrat {
         unsigned int        grade;
     public:
         Bureaucrat();
-        Bureaucrat(const std::string name, unsigned int grade);
+        Bureaucrat(std::string name, unsigned int grade);
         Bureaucrat(const Bureaucrat &src);
         Bureaucrat  &operator =(const Bureaucrat &src);
         ~Bureaucrat();
@@ -23,7 +23,7 @@ class Bureaucrat {
         void            IncGrade();
         void            DecGrade();
 
-        void signForm(Form &form);
+        void signForm(Form form) const;
 
         class GradeTooHighException : public std::exception {
             public:

@@ -5,11 +5,11 @@ Bureaucrat::Bureaucrat() : name("None"), grade(LOW_GRADE) {
     std::cout << "Bureaucrat Default constructor." << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const std::string name, unsigned int grade) : name(name){
+Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : name(name){
     if (grade < HIGHT_GRADE) {
-        throw GradeTooHighException();
+        throw Bureaucrat::GradeTooHighException();
     } else if (grade > LOW_GRADE) {
-        throw GradeTooLowException();
+        throw Bureaucrat::GradeTooLowException();
     }
     this->grade = grade;
     std::cout << "Bureaucrat Parametric constructor." << std::endl;
@@ -42,23 +42,23 @@ unsigned int Bureaucrat::getGrade() const {
 
 void Bureaucrat::IncGrade() {
     if (grade <= HIGHT_GRADE) {
-        throw GradeTooHighException();
+        throw Bureaucrat::GradeTooHighException();
     }
     grade--;
 }
 
 void Bureaucrat::DecGrade() {
     if (grade >= LOW_GRADE) {
-        throw GradeTooLowException();
+        throw Bureaucrat::GradeTooLowException();
     }
     grade++;
 }
 
-void Bureaucrat::signForm(Form &form) {
+void    Bureaucrat::signForm(Form form) const {
     try {
         form.beSigned(*this);
         std::cout << this->name << " signed " << form.getName() << std::endl;
-    } catch (std::exception &e) {
+    } catch (Form::GradeTooLowException &e) {
         std::cout << this->name << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
     }
 }

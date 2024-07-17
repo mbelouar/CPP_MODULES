@@ -7,7 +7,7 @@
 
 class Bureaucrat;
 
-class From {
+class Form {
     private:
         const std::string   name;
         bool                isSigned;
@@ -15,18 +15,18 @@ class From {
         const unsigned int  execGrade;
     public:
         From();
-        Form(const std::string name, const unsigned int signGrade, const unsigned int execGrade);
+        Form(std::string name, unsigned int signGrade, unsigned int execGrade);
         Form(const Form &src);
         ~Form();
 
         Form &operator =(const Form &src);
 
-        void            getName() const;
+        std::string     getName() const;
         bool            isFormSigned() const;
         unsigned int    getSignGrade() const;
         unsigned int    getExecGrade() const;
 
-        void    beSigned(const Bureaucrat &b);
+        void    beSigned(const Bureaucrat b);
         
         class GradeTooHighException : public std::exception {
             public:

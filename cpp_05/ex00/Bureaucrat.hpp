@@ -13,10 +13,10 @@ class Bureaucrat {
         unsigned int        grade;
     public:
         Bureaucrat();
-        Bureaucrat(const std::string name, unsigned int grade);
+        Bureaucrat(std::string name, unsigned int grade);
         Bureaucrat(const Bureaucrat &src);
         ~Bureaucrat();
-        
+
         Bureaucrat  &operator =(const Bureaucrat &src);
 
         std::string     getName() const;

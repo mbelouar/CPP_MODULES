@@ -4,7 +4,7 @@ Bureaucrat::Bureaucrat() : name("None"), grade(LOW_GRADE) {
     std::cout << "Bureaucrat Default constructor." << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const std::string name, unsigned int grade) : name(name){
+Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : name(name){
     if (grade < HIGHT_GRADE) {
         throw GradeTooHighException();
     } else if (grade > LOW_GRADE) {

@@ -1,18 +1,19 @@
 # include "Form.hpp"
+# include "Bureaucrat.hpp"
 
 Form::Form()
-	: name("None"), signGrade(HIGHTEST_GRADE), execGrade(HIGHTEST_GRADE)
+	: name("None"), signGrade(HIGHT_GRADE), execGrade(HIGHT_GRADE)
 {
 	this->_isSigned = false;
 }
 
-Form::Form(const std::string name, unsigned int signGrade, unsigned int execGrade)
+Form::Form(std::string name, unsigned int signGrade, unsigned int execGrade)
     : name(name), isSigned(false), signGrade(signGrade), execGrade(execGrade) {
     if (signGrade < HIGHT_GRADE || execGrade < HIGHT_GRADE) {
-        throw GradeTooHighException();
+        throw Bureaucrat::GradeTooHighException();
     }
     if (signGrade > LOW_GRADE || execGrade > LOW_GRADE) {
-        throw GradeTooLowException();
+        throw Bureaucrat::GradeTooLowException();
     }
 }
 
@@ -21,9 +22,9 @@ Form::Form(const Form &src)
     *this = src;
 }
 
-Form &Form::operator=(const Form &src) {
+Form    &Form::operator =(const Form &src) {
     if (this != &src) {
-        this->isSigned = src.isSigned;
+        this->isSigned = src.isFormSigned();
     }
     return *this;
 }
@@ -47,9 +48,9 @@ unsigned int Form::getExecGrade() const {
     return this->execGrade;
 }
 
-void Form::beSigned(const Bureaucrat &bureau) {
+void    Form::beSigned(const Bureaucrat bureau) {
     if (bureau.getGrade() > this->signGrade) {
-        throw GradeTooLowException();
+        throw Form::GradeTooLowException();
     }
     this->isSigned = true;
 }
