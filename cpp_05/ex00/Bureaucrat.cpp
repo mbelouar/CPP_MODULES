@@ -4,7 +4,13 @@ Bureaucrat::Bureaucrat() : name("None"), grade(LOW_GRADE) {
     std::cout << "Bureaucrat Default constructor." << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const std::string name, unsigned int grade) : name(name), grade(grade) {
+Bureaucrat::Bureaucrat(const std::string name, unsigned int grade) : name(name){
+    if (grade < HIGH_GRADE) {
+        throw GradeTooHighException();
+    } else if (grade > LOW_GRADE) {
+        throw GradeTooLowException();
+    }
+    this->grade = grade;
     std::cout << "Bureaucrat Parametric constructor." << std::endl;
 }
 
@@ -34,15 +40,20 @@ unsigned int Bureaucrat::getGrade() const {
 }
 
 void Bureaucrat::IncGrade() {
-    if (this->grade < HIGHT_GRADE) {
-         // throw execption
+    if (grade <= HIGH_GRADE) {
+        throw GradeTooHighException();
     }
-    this->grade--;
+    grade--;
 }
 
 void Bureaucrat::DecGrade() {
-    if (this->grade > LOW_GRADE) {
-        // throw exception
+    if (grade >= LOW_GRADE) {
+        throw GradeTooLowException();
     }
-    this->grade++;
+    grade++;
+}
+
+std::ostream &operator<<(std::ostream &output, const Bureaucrat &b) {
+    output << b.getName() << ", bureaucrat grade " << b.getGrade();
+    return output;
 }

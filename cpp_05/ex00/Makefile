@@ -8,7 +8,7 @@ RESET = \033[0m
 NAME    = bureaucrat  # Change this to your desired executable name
 CC      = g++                    # Change this if your compiler is not g++
 CFLAGS  = -Wall -Wextra -Werror -std=c++98
-SRC     = main.cpp #Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp # Add all source files here
+SRC     = main.cpp Bureaucrat.cpp # Add all source files here
 OBJ     = ${SRC:.cpp=.o}
 
 all: ${NAME}
