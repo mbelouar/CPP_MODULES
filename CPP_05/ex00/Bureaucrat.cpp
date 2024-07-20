@@ -6,7 +6,7 @@ Bureaucrat::Bureaucrat() : name("None"), grade(LOW_GRADE) {
 
 Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : name(name){
     if (grade < HIGHT_GRADE) {
-        throw GradeTooHighException();
+        throw Bureaucrat::GradeTooHighException();
     } else if (grade > LOW_GRADE) {
         throw GradeTooLowException();
     }
@@ -20,12 +20,12 @@ Bureaucrat::Bureaucrat(const Bureaucrat &src) : name(src.getName() + "_copy") {
 }
 
 Bureaucrat::~Bureaucrat() {
-    std::cout << "Bureaucrat destructor." << std::endl;
+    std::cout << "Bureaucrat Destructor." << std::endl;
 }
 
 Bureaucrat &Bureaucrat::operator =(const Bureaucrat &src) {
     if (this != &src) {
-        std::cout << "Bureaucrat copy assignment operator." << std::endl;
+        std::cout << "Bureaucrat Copy Assignment operator." << std::endl;
         this->grade = src.getGrade();
     }
     return *this;

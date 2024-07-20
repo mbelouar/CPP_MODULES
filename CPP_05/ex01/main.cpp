@@ -9,7 +9,6 @@ int main() {
 
         Form f1("Form1", 1, 50);
         std::cout << f1 << std::endl;
-
         b1.signForm(f1);
         std::cout << f1 << std::endl;
 
@@ -27,6 +26,7 @@ int main() {
     } catch (std::exception &e) {
         std::cerr << e.what() << std::endl;
     }
+    std::cout << "===============================" << std::endl;
 
     try {
         // Test with invalid grade form
@@ -34,6 +34,7 @@ int main() {
     } catch (std::exception &e) {
         std::cerr << e.what() << std::endl;
     }
+    std::cout << "===============================" << std::endl;
 
     try {
         Bureaucrat b3("Test", 1);
@@ -44,6 +45,7 @@ int main() {
     } catch (std::exception &e) {
         std::cerr << e.what() << std::endl;
     }
+    std::cout << "===============================" << std::endl;
 
     return 0;
 }
