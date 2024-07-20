@@ -3,9 +3,12 @@
 
 # include <iostream>
 # include <string>
+# include "AForm.hpp"
 
 # define HIGHT_GRADE 1
 # define LOW_GRADE 150
+
+class AForm;
 
 class Bureaucrat {
     private:
@@ -15,14 +18,16 @@ class Bureaucrat {
         Bureaucrat();
         Bureaucrat(std::string name, unsigned int grade);
         Bureaucrat(const Bureaucrat &src);
-        ~Bureaucrat();
-
         Bureaucrat  &operator =(const Bureaucrat &src);
+        ~Bureaucrat();
 
         std::string     getName() const;
         unsigned int    getGrade() const;
         void            IncGrade();
         void            DecGrade();
+
+        void signForm(AForm &form) const;
+        void executeForm(AForm const &form) const;
 
         class GradeTooHighException : public std::exception {
             public:

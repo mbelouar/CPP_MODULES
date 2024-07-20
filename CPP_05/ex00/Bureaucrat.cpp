@@ -1,7 +1,7 @@
 # include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : name("None"), grade(LOW_GRADE) {
-    std::cout << "Bureaucrat Default constructor." << std::endl;
+    // std::cout << "Bureaucrat Default constructor." << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : name(name){
@@ -11,21 +11,21 @@ Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : name(name){
         throw GradeTooLowException();
     }
     this->grade = grade;
-    std::cout << "Bureaucrat Parametric constructor." << std::endl;
+    // std::cout << "Bureaucrat Parametric constructor." << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &src) : name(src.getName() + "_copy") {
-    std::cout << "Bureaucrat Copy constructor." << std::endl;
+    // std::cout << "Bureaucrat Copy constructor." << std::endl;
     *this = src;
 }
 
 Bureaucrat::~Bureaucrat() {
-    std::cout << "Bureaucrat Destructor." << std::endl;
+    // std::cout << "Bureaucrat Destructor." << std::endl;
 }
 
 Bureaucrat &Bureaucrat::operator =(const Bureaucrat &src) {
     if (this != &src) {
-        std::cout << "Bureaucrat Copy Assignment operator." << std::endl;
+        // std::cout << "Bureaucrat Copy Assignment operator." << std::endl;
         this->grade = src.getGrade();
     }
     return *this;
@@ -51,6 +51,14 @@ void Bureaucrat::DecGrade() {
         throw GradeTooLowException();
     }
     grade++;
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+    return "Exception: Grade is too high for his form!";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+    return "Exception: Grade is too low for his form!";
 }
 
 std::ostream &operator<<(std::ostream &output, const Bureaucrat &b) {
