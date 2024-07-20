@@ -4,6 +4,7 @@
 # include "AForm.hpp"
 # include <iostream>
 # include <cstdlib>
+# include <ctime>
 
 class RobotomyRequestForm : public AForm {
 private:

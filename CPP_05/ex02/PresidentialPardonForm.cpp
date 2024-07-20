@@ -10,7 +10,7 @@ PresidentialPardonForm::~PresidentialPardonForm() {
 }
 
 void PresidentialPardonForm::execute(Bureaucrat const &executor) const {
-    if (!this->getIsSigned())
+    if (!this->isFormSigned())
         throw AForm::FormNotSignedException();
     if (executor.getGrade() > this->getExecGrade())
         throw AForm::GradeTooLowException();
