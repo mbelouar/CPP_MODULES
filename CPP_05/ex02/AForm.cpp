@@ -67,7 +67,7 @@ void    AForm::beSigned(const Bureaucrat bureau) {
 }
 
 std::ostream& operator<<(std::ostream& output, const AForm& form) {
-    output << "Form " << form.getName() << ", Signed: " << (form.isFormSigned() ? "Yes" : "No")
-           << ", Sign Grade: " << form.getSignGrade() << ", Execute Grade: " << form.getExecGrade();
+    output << "Form " << form.getName() << "\n\t|--> Signed: " << (form.isFormSigned() ? "Yes" : "No")
+           << "\n\t|--> Sign Grade: " << form.getSignGrade() << "\n\t|--> Execute Grade: " << form.getExecGrade() << std::endl;
     return output;
 }
