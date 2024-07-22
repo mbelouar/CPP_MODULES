@@ -16,7 +16,7 @@ class Intern {
 
         Intern & operator=(Intern const &src);
 
-        AForm * makeForm(std::string formName, std::string target);
+        AForm   *makeForm(std::string formName, std::string target);
 
         class FormNotFoundException : public std::exception {
             public:

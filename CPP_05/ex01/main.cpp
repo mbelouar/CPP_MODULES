@@ -23,7 +23,8 @@ int main() {
 
         // Test with invalid grade form
         Form f3("Form3", 0, 150);
-    } catch (std::exception &e) {
+    } 
+    catch (std::exception &e) {
         std::cerr << e.what() << std::endl;
     }
     std::cout << "===============================" << std::endl;

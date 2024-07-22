@@ -1,8 +1,24 @@
 #include "RobotomyRequestForm.hpp"
 
+RobotomyRequestForm::RobotomyRequestForm()
+    : AForm("RobotomyRequestForm", 72, 45), target("None") {
+}
+
 RobotomyRequestForm::RobotomyRequestForm(const std::string &target)
     : AForm("RobotomyRequestForm", 72, 45), target(target) {
         std::srand(std::time(NULL));
+}
+
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &src)
+    : AForm("RobotomyRequestForm", 72, 45), target(src.target) {
+    *this = src;
+}
+
+RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &src) {
+    if (this != &src) {
+        this->target = src.target;
+    }
+    return *this;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm() {

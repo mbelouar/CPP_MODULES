@@ -49,14 +49,14 @@ unsigned int AForm::getExecGrade() const {
 }
 
 const char* AForm::GradeTooHighException::what() const throw() {
-    return "Exception: Form Grade is too high!";
+    return "Bureaucrat Grade is too high!";
 }
 
 const char* AForm::GradeTooLowException::what() const throw() {
-    return "Exception: Form Grade is too low!";
+    return "Bureaucrat Grade is too low!";
 }
 const char* AForm::FormNotSignedException::what() const throw() {
-    return "Exception: Form is not signed!";
+    return "Form is not signed!";
 }
 
 void    AForm::beSigned(const Bureaucrat bureau) {

@@ -31,7 +31,6 @@ int main() {
 
     try {
         // This should also throw an exception
-        std::cout << ">> ";
         Bureaucrat b4("Invalid", 151);
     } catch (std::exception &e) {
         std::cerr << e.what() << std::endl;

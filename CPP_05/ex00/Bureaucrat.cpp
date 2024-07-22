@@ -8,7 +8,7 @@ Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : name(name){
     if (grade < HIGHT_GRADE) {
         throw Bureaucrat::GradeTooHighException();
     } else if (grade > LOW_GRADE) {
-        throw GradeTooLowException();
+        throw Bureaucrat::GradeTooLowException();
     }
     this->grade = grade;
     // std::cout << "Bureaucrat Parametric constructor." << std::endl;
@@ -41,24 +41,24 @@ unsigned int Bureaucrat::getGrade() const {
 
 void Bureaucrat::IncGrade() {
     if (grade <= HIGHT_GRADE) {
-        throw GradeTooHighException();
+        throw Bureaucrat::GradeTooHighException();
     }
     grade--;
 }
 
 void Bureaucrat::DecGrade() {
     if (grade >= LOW_GRADE) {
-        throw GradeTooLowException();
+        throw Bureaucrat::GradeTooLowException();
     }
     grade++;
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-    return "Exception: Grade is too high for his form!";
+    return "Exception: Grade is too high!";
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-    return "Exception: Grade is too low for his form!";
+    return "Exception: Grade is too low!";
 }
 
 std::ostream &operator<<(std::ostream &output, const Bureaucrat &b) {

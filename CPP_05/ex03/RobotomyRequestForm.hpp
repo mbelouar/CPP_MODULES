@@ -11,7 +11,10 @@ private:
     std::string target;
 
 public:
+    RobotomyRequestForm();
     RobotomyRequestForm(const std::string &target);
+    RobotomyRequestForm(const RobotomyRequestForm &src);
+    RobotomyRequestForm &operator=(const RobotomyRequestForm &src);
     virtual ~RobotomyRequestForm();
 
     void execute(Bureaucrat const &executor) const;

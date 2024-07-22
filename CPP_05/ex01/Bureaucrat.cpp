@@ -55,11 +55,11 @@ void Bureaucrat::DecGrade() {
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-    return "Exception: Grade is too high for his form!";
+    return "Grade is too high!";
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-    return "Exception: Grade is too low for his form!";
+    return "Grade is too low!";
 }
 
 void    Bureaucrat::signForm(Form &form) const {

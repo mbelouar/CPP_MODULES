@@ -49,11 +49,11 @@ unsigned int Form::getExecGrade() const {
 }
 
 const char* Form::GradeTooHighException::what() const throw() {
-    return "Exception: Form Grade is too high!";
+    return "Bureaucrat Grade is too high!";
 }
 
 const char* Form::GradeTooLowException::what() const throw() {
-    return "Exception: Form Grade is too low!";
+    return "Bureaucrat Grade is too low!";
 }
 
 void    Form::beSigned(const Bureaucrat bureau) {

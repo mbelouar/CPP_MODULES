@@ -5,7 +5,7 @@ GREEN = \033[1;32m
 YELLOW = \033[1;33m
 RESET = \033[0m
 
-NAME    = AForm  # Change this to your desired executable name
+NAME    = aForm  # Change this to your desired executable name
 CC      = g++                    # Change this if your compiler is not g++
 CFLAGS  = -Wall -Wextra -Werror -std=c++98
 SRC     = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp # Add all source files here

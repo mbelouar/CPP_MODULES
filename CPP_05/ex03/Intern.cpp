@@ -23,7 +23,7 @@ Intern  &Intern::operator=(Intern const &src) {
 }
 
 const char* Intern::FormNotFoundException::what() const throw() {
-    return "Exception: Form not found!";
+    return "Form not found!";
 }
 
 AForm   *Intern::makeForm(std::string formName, std::string target) {

@@ -7,33 +7,33 @@
 
 int main() {
     try {
-        Intern someRandomIntern;
+        Intern randomIntern;
         AForm* rrf;
         
-        rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+        rrf = randomIntern.makeForm("robotomy request", "Bender");
         if (rrf) {
             std::cout << *rrf << std::endl;
-            Bureaucrat b1("John", 1);
+            Bureaucrat b1("Simo", 1);
             b1.signForm(*rrf);
             b1.executeForm(*rrf);
             delete rrf;
         }
         std::cout << "----------------------------------------" << std::endl;
 
-        rrf = someRandomIntern.makeForm("shrubbery creation", "home");
+        rrf = randomIntern.makeForm("shrubbery creation", "home");
         if (rrf) {
             std::cout << *rrf << std::endl;
-            Bureaucrat b2("Alice", 1);
+            Bureaucrat b2("Bickle", 1);
             b2.signForm(*rrf);
             b2.executeForm(*rrf);
             delete rrf;
         }
         std::cout << "----------------------------------------" << std::endl;
 
-        rrf = someRandomIntern.makeForm("presidential pardon", "Ford Prefect");
+        rrf = randomIntern.makeForm("presidential pardon", "Ford");
         if (rrf) {
             std::cout << *rrf << std::endl;
-            Bureaucrat b3("Doe", 1);
+            Bureaucrat b3("Bello", 1);
             b3.signForm(*rrf);
             b3.executeForm(*rrf);
             delete rrf;
@@ -41,7 +41,7 @@ int main() {
         std::cout << "----------------------------------------" << std::endl;
 
         // This should throw an exception
-        rrf = someRandomIntern.makeForm("unknown", "Nobody");
+        rrf = randomIntern.makeForm("unknown", "Nobody");
         if (rrf) {
             std::cout << *rrf << std::endl;
             delete rrf;
