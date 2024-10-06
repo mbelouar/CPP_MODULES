@@ -1,13 +1,15 @@
-// #include "ScalarConversion.hpp"
+#include "ScalarConverter.hpp"
 #include <iostream>
 #include <string>
-int main() {
 
-    int a;
-    std::cout << "before : " << sizeof(a) << std::endl;
-    double b = 20.5;
-    a = b;
-    std::cout << "a = " << a << std::endl;
-    std::cout << "After : " << sizeof(a) << std::endl;
+int main(int argc, char* argv[]) {
+    if (argc != 2) {
+        std::cerr << "Usage: ./convert <string>" << std::endl;
+        return 1;
+    }
+    
+    std::string string = argv[1];
+    ScalarConverter::convert(string);
+
     return 0;
 }
