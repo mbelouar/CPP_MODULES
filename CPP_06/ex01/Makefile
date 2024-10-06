@@ -5,10 +5,10 @@ GREEN = \033[1;32m
 YELLOW = \033[1;33m
 RESET = \033[0m
 
-NAME    = convert  # Change this to your desired executable name
+NAME    = serialize  # Change this to your desired executable name
 CC      = g++                    # Change this if your compiler is not g++
 CFLAGS  = -Wall -Wextra -Werror -std=c++98
-SRC     = main.cpp ScalarConverter.cpp # Add all source files here
+SRC     = main.cpp Serializer.cpp  # Add all source files here
 OBJ     = ${SRC:.cpp=.o}
 
 all: ${NAME}
