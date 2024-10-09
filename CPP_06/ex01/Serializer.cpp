@@ -13,7 +13,7 @@ Serializer &Serializer::operator=(Serializer const &src)
     return *this;
 }
 
-Serializer::~Serializer();
+Serializer::~Serializer(){}
 
 uintptr_t Serializer::serialize(Data* ptr) {
     return reinterpret_cast<uintptr_t>(ptr);
