@@ -6,7 +6,7 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange &src) {
     *this = src;
 }
 
-BitcoinExchange::BitcoinExchange &operator=(const BitcoinExchange &src) {
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange &src) {
     if (this != &src) {
         this->priceHistory = src.priceHistory;
     }
@@ -32,7 +32,22 @@ void BitcoinExchange::loadPriceHistory(const std::string& csvFile) {
     file.close();
 }
 
-bool BitcoinExchange::isValidDate(const std::string& valueStr) {
+bool BitcoinExchange::isValidDate(const std::string& date) {
+    if (date.length() != 10) return false;
+    if (date[4] != '-' || date[7] != '-') return false;
+    try {
+        int year = std::stoi(date.substr(0, 4));
+        int month = std::stoi(date.substr(5, 2));
+        int day = std::stoi(date.substr(8, 2));
+        if (month < 1 || month > 12 || day < 1 || day > 31 || year < 0 || year > 9999)
+            return false;
+    } catch (const std::exception &e) {
+        return false;
+    }
+    return true;
+}
+
+bool BitcoinExchange::isValidValue(const std::string& valueStr) {
     try {
         double value = std::stod(valueStr);
         if (value < 0 || value > 1000) return false;
@@ -43,7 +58,7 @@ bool BitcoinExchange::isValidDate(const std::string& valueStr) {
 }
 
 std::string BitcoinExchange::findClosestDate(const std::string& date) {
-    auto it = priceHistory.lower_bound(date);
+    std::map<std::string, double>::iterator it = priceHistory.lower_bound(date);
     if (it != priceHistory.begin() && (it == priceHistory.end() || it->first != date)) {
         --it; // Move to the previous date
     }
