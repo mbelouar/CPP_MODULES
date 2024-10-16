@@ -28,13 +28,15 @@ void BitcoinExchange::loadPriceHistory(const std::string& csvFile) {
         if (isValidDate(date) && isValidValue(value)) {
             priceHistory[date] = std::stod(value);
         }
-    }
+    } 
     file.close();
 }
 
 bool BitcoinExchange::isValidDate(const std::string& date) {
-    if (date.length() != 10) return false;
-    if (date[4] != '-' || date[7] != '-') return false;
+    if (date.length() != 10)
+        return false;
+    if (date[4] != '-' || date[7] != '-')
+        return false;
     try {
         int year = std::stoi(date.substr(0, 4));
         int month = std::stoi(date.substr(5, 2));
@@ -50,7 +52,8 @@ bool BitcoinExchange::isValidDate(const std::string& date) {
 bool BitcoinExchange::isValidValue(const std::string& valueStr) {
     try {
         double value = std::stod(valueStr);
-        if (value < 0 || value > 1000) return false;
+        if (value < 0 || value > 1000)
+            return false;
     } catch (const std::exception &e) {
         return false;
     }
@@ -59,10 +62,28 @@ bool BitcoinExchange::isValidValue(const std::string& valueStr) {
 
 std::string BitcoinExchange::findClosestDate(const std::string& date) {
     std::map<std::string, double>::iterator it = priceHistory.lower_bound(date);
-    if (it != priceHistory.begin() && (it == priceHistory.end() || it->first != date)) {
-        --it; // Move to the previous date
+    if (it != priceHistory.end() && it->first == date) {
+        // If the exact date is found, return it directly.
+        return it->first;
     }
-    return it->first;
+
+    std::map<std::string, double>::iterator next = it;
+    std::map<std::string, double>::iterator prev = (it == priceHistory.begin()) ? priceHistory.end() : std::prev(it);
+
+    if (next == priceHistory.end()) {
+        return prev->first;
+    }
+    if (prev == priceHistory.end()) {
+        return next->first;
+    }
+
+    // Calculate the difference as the number of days between the input date and prev/next dates
+    int prevDiff = std::abs(std::stoi(prev->first.substr(0, 4) + prev->first.substr(5, 2) + prev->first.substr(8, 2)) -
+                            std::stoi(date.substr(0, 4) + date.substr(5, 2) + date. substr(8, 2)));
+    int nextDiff = std::abs(std::stoi(next->first.substr(0, 4) + next->first.substr(5, 2) + next->first.substr(8, 2)) -
+                            std::stoi(date.substr(0, 4) + date.substr(5, 2) + date.substr(8, 2)));
+
+    return (nextDiff < prevDiff) ? next->first : prev->first;
 }
 
 void BitcoinExchange::processInput(const std::string& inputFile) {
