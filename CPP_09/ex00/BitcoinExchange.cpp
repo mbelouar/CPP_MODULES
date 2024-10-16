@@ -18,7 +18,7 @@ BitcoinExchange::~BitcoinExchange() {}
 void BitcoinExchange::loadPriceHistory(const std::string& csvFile) {
     std::ifstream file(csvFile);
     if (!file.is_open()) {
-        std::cerr << "Error: cannot open file " << csvFile << std::endl;
+        std::cerr << "Error: cannot open csv file " << csvFile << std::endl;
         return;
     }
     std::string line;
@@ -89,7 +89,7 @@ std::string BitcoinExchange::findClosestDate(const std::string& date) {
 void BitcoinExchange::processInput(const std::string& inputFile) {
     std::ifstream file(inputFile);
     if (!file.is_open()) {
-        std::cerr << "Error: could not open file." << std::endl;
+        std::cerr << "Error: could not open input file." << std::endl;
         return;
     }
 

@@ -5,10 +5,10 @@ GREEN = \033[1;32m
 YELLOW = \033[1;33m
 RESET = \033[0m
 
-NAME    = easyfind  # Change this to your desired executable name
+NAME    = RPN  # Change this to your desired executable name
 CC      = g++                    # Change this if your compiler is not g++
 CFLAGS  = -Wall -Wextra -Werror -std=c++98
-SRC     = main.cpp  # Add all source files here
+SRC     = main.cpp RPN.cpp # Add all source files here
 OBJ     = ${SRC:.cpp=.o}
 
 all: ${NAME}
