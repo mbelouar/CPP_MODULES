@@ -28,9 +28,9 @@ class PmergeMe {
 
     public:
         PmergeMe();
-        PmergeMe(const PmergeMe& src);
+        PmergeMe(const PmergeMe &src);
         ~PmergeMe();
-        PmergeMe& operator=(const PmergeMe& rhs);
+        PmergeMe& operator=(const PmergeMe &src);
 };
 
 #endif
