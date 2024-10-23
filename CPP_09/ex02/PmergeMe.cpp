@@ -16,3 +16,16 @@ PmergeMe& PmergeMe::operator=(const PmergeMe &src) {
     return *this;
 }
 
+bool PmergeMe::addNumberToContainers(int number) {
+    int vectFind = find(_vec.begin(), _vec.end(), number) != _vec.end();
+    int listFind = find(_list.begin(), _list.end(), number) != _list.end();
+
+    if (vectFind || listFind) {
+        return false;
+    } else {
+        _vec.push_back(number);
+        _list.push_back(number);
+        return true;
+    }
+}
+
