@@ -3,7 +3,7 @@
 
 # include <iostream>
 # include <vector>
-# include <list>
+# include <deque>
 # include <string>
 # include <algorithm>
 # include <stdexcept>
@@ -12,17 +12,20 @@
 class PmergeMe {
     private:
         std::vector<int> _vec;
-        std::list<int> _list;
+        std::deque<int> _deq;
+        
+        bool addNumberToContainers(int number);
 
-        // Sorting algorithms for vector
         void sortVectorUsingMerge(int first, int last);
-        void merge(int first, int middle, int last);
+        void mergeVector(int first, int middle, int last);
+
+        void sortDequeUsingMerge(int first, int last);
+        void mergeDeque(int first, int middle, int last);
 
     public:
         void start(char **argv);
-        bool addNumberToContainers(int number);
         const std::vector<int> &getVector() const;
-        const std::list<int> &getList() const;
+        const std::deque<int> &getDeque() const;
         
         PmergeMe();
         PmergeMe(const PmergeMe &src);
