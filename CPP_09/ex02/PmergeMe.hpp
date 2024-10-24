@@ -5,6 +5,7 @@
 # include <vector>
 # include <list>
 # include <string>
+# include <algorithm>
 # include <stdexcept>
 # include <chrono>
 
@@ -13,20 +14,16 @@ class PmergeMe {
         std::vector<int> _vec;
         std::list<int> _list;
 
-        // Pushes a number to both containers
-        bool addNumberToContainers(int number);
-
         // Sorting algorithms for vector
-        void sortVectorUsingInsertion(int first, int last);
         void sortVectorUsingMerge(int first, int last);
-        void mergeVectorSections(int first, int mid, int last);
-
-        // Sorting algorithms for list
-        void sortListUsingInsertion(int first, int last);
-        void sortListUsingMerge(int first, int last);
-        void mergeListSections(int first, int mid, int last);
+        void merge(int first, int middle, int last);
 
     public:
+        void start(char **argv);
+        bool addNumberToContainers(int number);
+        const std::vector<int> &getVector() const;
+        const std::list<int> &getList() const;
+        
         PmergeMe();
         PmergeMe(const PmergeMe &src);
         PmergeMe& operator=(const PmergeMe &src);
