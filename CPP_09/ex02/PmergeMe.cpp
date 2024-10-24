@@ -25,15 +25,26 @@ const std::deque<int> &PmergeMe::getDeque() const {
 }
 
 bool PmergeMe::addNumberToContainers(int number) {
-    bool vectFind = std::find(_vec.begin(), _vec.end(), number) != _vec.end();
-    bool deqFind = std::find(_deq.begin(), _deq.end(), number) != _deq.end();
+    this->_vec.push_back(number);
+    this->_deq.push_back(number);
+    return true;
+}
 
-    if (vectFind || deqFind) {
-        return false;
-    } else {
-        this->_vec.push_back(number);
-        this->_deq.push_back(number);
-        return true;
+void PmergeMe::sortVectorUsingMerge(int left, int right) {
+    if (left < right) {
+        int middle = left + (right - left) / 2;
+        sortVectorUsingMerge(left, middle);
+        sortVectorUsingMerge(middle + 1, right);
+        mergeVector(left, middle, right);
+    }
+}
+
+void PmergeMe::sortDequeUsingMerge(int left, int right) {
+    if (left < right) {
+        int middle = left + (right - left) / 2;
+        sortDequeUsingMerge(left, middle);
+        sortDequeUsingMerge(middle + 1, right);
+        mergeDeque(left, middle, right);
     }
 }
 
@@ -75,15 +86,6 @@ void PmergeMe::mergeVector(int left, int middle, int right) {
         _vec[k] = R[j];
         j++;
         k++;
-    }
-}
-
-void PmergeMe::sortVectorUsingMerge(int left, int right) {
-    if (left < right) {
-        int middle = left + (right - left) / 2;
-        sortVectorUsingMerge(left, middle);
-        sortVectorUsingMerge(middle + 1, right);
-        mergeVector(left, middle, right);
     }
 }
 
@@ -129,15 +131,6 @@ void PmergeMe::mergeDeque(int left, int middle, int right) {
     }
 }
 
-void PmergeMe::sortDequeUsingMerge(int left, int right) {
-    if (left < right) {
-        int middle = left + (right - left) / 2;
-        sortDequeUsingMerge(left, middle);
-        sortDequeUsingMerge(middle + 1, right);
-        mergeDeque(left, middle, right);
-    }
-}
-
 bool is_number(const std::string &s) {
     if (s.empty())
         return false;
@@ -172,7 +165,7 @@ void PmergeMe::start(char **argv) {
         }
         i++;
     }
-    // print the vector
+    // print container before sorting
     const std::vector<int>& vec = getVector();
     std::cout << "Before: ";
     for(std::vector<int>::const_iterator it = vec.begin(); it != vec.end(); ++it) {
@@ -192,19 +185,12 @@ void PmergeMe::start(char **argv) {
         durationDeq = endDeq - startDeq;
     }
     std::cout << std::endl;
-    // print the vector
+    // print container after sorting
     std::cout << "After : ";
     for(std::vector<int>::const_iterator it = vec.begin(); it != vec.end(); ++it) {
         std::cout << *it << " ";
     }
     std::cout << std::endl;
-    // // print the deque
-    // const std::deque<int>& deq = getDeque();
-    // std::cout << "After using deque: ";
-    // for(std::deque<int>::const_iterator it = deq.begin(); it != deq.end(); ++it) {
-    //     std::cout << *it << " ";
-    // }
-    // std::cout << std::endl;
     std::cout << "Time to process a range of " << _vec.size() << " elements with std::vector: " << durationVec.count() << " us" << std::endl;
     std::cout << "Time to process a range of " << _deq.size() << " elements with std::deque: " << durationDeq.count() << " us" << std::endl;
 }

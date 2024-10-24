@@ -13,12 +13,15 @@ class PmergeMe {
     private:
         std::vector<int> _vec;
         std::deque<int> _deq;
+        std::chrono::duration<double, std::micro> _durationVec, _durationDeq;
         
         bool addNumberToContainers(int number);
 
+        void SortVector(int first, int last);
         void sortVectorUsingMerge(int first, int last);
         void mergeVector(int first, int middle, int last);
 
+        void SortDeque(int first, int last);
         void sortDequeUsingMerge(int first, int last);
         void mergeDeque(int first, int middle, int last);
 
