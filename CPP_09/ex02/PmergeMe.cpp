@@ -30,6 +30,20 @@ bool PmergeMe::addNumberToContainers(int number) {
     return true;
 }
 
+void PmergeMe::SortVector() {
+    std::chrono::high_resolution_clock::time_point startVec = std::chrono::high_resolution_clock::now();
+    sortVectorUsingMerge(0, _vec.size() - 1);
+    std::chrono::high_resolution_clock::time_point endVec = std::chrono::high_resolution_clock::now();
+    this->durationVec = endVec - startVec;
+}
+
+void PmergeMe::SortDeque() {
+    std::chrono::high_resolution_clock::time_point startDeq = std::chrono::high_resolution_clock::now();
+    sortDequeUsingMerge(0, _deq.size() - 1);
+    std::chrono::high_resolution_clock::time_point endDeq = std::chrono::high_resolution_clock::now();
+    this->durationDeq = endDeq - startDeq;
+}
+
 void PmergeMe::sortVectorUsingMerge(int left, int right) {
     if (left < right) {
         int middle = left + (right - left) / 2;
@@ -151,7 +165,6 @@ bool is_number(const std::string &s) {
 
 void PmergeMe::start(char **argv) {
     int i = 1;
-    std::chrono::duration<double, std::micro> durationVec, durationDeq;
     while (argv[i]) {
         std::string arg = argv[i];
         if (!is_number(arg)) {
@@ -174,15 +187,8 @@ void PmergeMe::start(char **argv) {
     if (vec.size() == 2 && vec[0] > vec[1]) {
         std::swap(_vec[0], _vec[1]);
     } else if (vec.size() > 2) {
-        std::chrono::high_resolution_clock::time_point startVec = std::chrono::high_resolution_clock::now();
-        sortVectorUsingMerge(0, _vec.size() - 1);
-        std::chrono::high_resolution_clock::time_point endVec = std::chrono::high_resolution_clock::now();
-        durationVec = endVec - startVec;
-
-        std::chrono::high_resolution_clock::time_point startDeq = std::chrono::high_resolution_clock::now();
-        sortDequeUsingMerge(0, _deq.size() - 1);
-        std::chrono::high_resolution_clock::time_point endDeq = std::chrono::high_resolution_clock::now();
-        durationDeq = endDeq - startDeq;
+        SortVector();
+        SortDeque();
     }
     std::cout << std::endl;
     // print container after sorting
@@ -191,6 +197,6 @@ void PmergeMe::start(char **argv) {
         std::cout << *it << " ";
     }
     std::cout << std::endl;
-    std::cout << "Time to process a range of " << _vec.size() << " elements with std::vector: " << durationVec.count() << " us" << std::endl;
-    std::cout << "Time to process a range of " << _deq.size() << " elements with std::deque: " << durationDeq.count() << " us" << std::endl;
+    std::cout << "Time to process a range of " << _vec.size() << " elements with std::vector: " << this->durationVec.count() << " us" << std::endl;
+    std::cout << "Time to process a range of " << _deq.size() << " elements with std::deque: " << this->durationDeq.count() << " us" << std::endl;
 }
