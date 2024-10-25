@@ -173,7 +173,7 @@ void PmergeMe::start(char **argv) {
         }
         int number = std::stoi(arg);
         if (!addNumberToContainers(number)) {
-            std::cout << "Error: Number " << number << " already exists in the containers." << std::endl;
+            std::cout << "Error" << std::endl;
             return;        
         }
         i++;
