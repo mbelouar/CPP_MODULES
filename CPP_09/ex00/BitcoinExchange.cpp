@@ -67,15 +67,9 @@ std::string BitcoinExchange::findClosestDate(const std::string& date) {
         return it->first;
     }
 
+    // lower_bound will point to the next heighest key => ( next = it )
     std::map<std::string, double>::iterator next = it;
     std::map<std::string, double>::iterator prev = (it == priceHistory.begin()) ? priceHistory.end() : std::prev(it);
-
-    if (next == priceHistory.end()) {
-        return prev->first;
-    }
-    if (prev == priceHistory.end()) {
-        return next->first;
-    }
 
     // Calculate the difference as the number of days between the input date and prev/next dates
     int prevDiff = std::abs(std::stoi(prev->first.substr(0, 4) + prev->first.substr(5, 2) + prev->first.substr(8, 2)) -

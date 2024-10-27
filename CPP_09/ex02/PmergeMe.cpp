@@ -68,7 +68,7 @@ void PmergeMe::mergeVector(int left, int middle, int right) {
     int n2 = right - middle;
 
     int L[n1], R[n2];
-
+ 
     for (int i = 0; i< n1; i++) {
         L[i] = _vec[left + i];
     }
